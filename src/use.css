@@ -1,0 +1,24 @@
+
+
+.forLogInInput{
+      margin-left: 20px;
+      margin-top: 70px;
+      margin-right: 20px;
+}
+.forDivLogIn{
+    position: absolute;
+
+    background-color: #53A0FB;
+    height: 500px;
+    width: 550px;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+    opacity: 0.9;
+}   
+.loginblock{
+    display: flex;
+    justify-content: center;
+}
+
