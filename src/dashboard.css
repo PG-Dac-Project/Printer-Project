@@ -1,0 +1,25 @@
+.card{
+    width: 22rem;
+    height: 16rem;
+    text-align: center;
+    
+}
+
+.Dashboard-div1-content{
+    background-color: black;
+    color: azure;
+    background-image: url("./images/p1.jpg");
+    background-size: cover;
+}
+
+.one-card{
+    padding: 20px;
+}
+
+.card-div{
+    padding-top: 100px;
+    display: flex;
+    flex-wrap: wrap ;
+    justify-content: space-around;
+}
+
