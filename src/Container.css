@@ -4,33 +4,32 @@
   height: 150px;
   background-image: linear-gradient(90deg, rgba(98,12,156,1) 0%, rgba(20,28,3,1) 0%, rgba(43,71,223,1) 92%);
 }
-.home-container{
-    height: 800px;
-    background-color: black;
-    color: azure;
-    background-image: url("./images/p1.jpg");
-}  
-.home-div1-content{
   
-    background-size: cover;
+.home-div1-content{
+  height: 800px;
+  background-color: black;
+  color: azure;
+  background-image: url("./images/p1.jpg");
+  background-size: cover;
 }
 
 
-
+/* main footer */
 .footer-container {
- 
   background-image: linear-gradient(90deg, rgba(131,58,180,1) 0%, rgba(69,69,252,1) 0%, rgba(27,25,25,1) 88%);
   padding: 20px;
   color: white;
 }
+/* for collection divs */
 .footer-content{
-  height: 150px;
+  flex-wrap: wrap;
   display: flex;
   justify-content: space-between;
  
 }
+/* single div */
 .footer-content-div{
-   height: 100px;
+   height: 150px;
 }
 .main-container{
   background-color:black;
