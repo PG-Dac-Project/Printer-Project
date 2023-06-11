@@ -3,7 +3,7 @@ import Home from './Home';
 import Software from './SofwareDrivers';
 import Products from './Products';
 import About from './About';
-import Dashboard from './Dashboard';
+import Dashboard from './Dashboard_Folder/Dashboard';
 import Notfound from './NotFound';
 import ContactUs from './ContactUs';
 import Header from './Header';
@@ -11,6 +11,10 @@ import Footer from './Footer';
 import './navbar_use.css'
 import './Container.css'
 import Login from './Login';
+import CreateEnquiry from "./Dashboard_Folder/CreateEnquiry"
+import UpdateEnquiry from './Dashboard_Folder/UpdateEnquiry';
+import ViewEnquiryStatus from './Dashboard_Folder/ViewEnquiryStatus';
+import ViewFaq from './Dashboard_Folder/ViewFaq';
 function Landing() {
 
         let history = useHistory();
@@ -63,6 +67,10 @@ function Landing() {
                     <Route path="/about" component={About} />
                     <Route path="/ContactUs" component={ContactUs} />
                     <Route path="/login" component={Login} />
+                    <Route exact path='/CreateEnquiry' component={CreateEnquiry} />
+                    <Route exact path='/UpdateEnquiry' component={UpdateEnquiry} />
+                    <Route exact path='/ViewEnquiryStatus' component={ViewEnquiryStatus} />
+                    <Route exact path='/ViewFaq' component={ViewFaq} />
                     <Route path="*" component={Notfound} />
                 </Switch>
             </div>

@@ -1,14 +1,18 @@
 .card{
-    width: 22rem;
-    height: 16rem;
+    width: 350px;
     text-align: center;
+    border: 1px;
     
+}
+.card-body{
+    padding: 0%;
+    background-color: blue;
 }
 
 .Dashboard-div1-content{
     background-color: black;
     color: azure;
-    background-image: url("./images/p1.jpg");
+    background-image: url("../images/p1.jpg");
     background-size: cover;
 }
 
@@ -18,8 +22,12 @@
 
 .card-div{
     padding-top: 100px;
+    padding-bottom: 100px;
     display: flex;
     flex-wrap: wrap ;
     justify-content: space-around;
 }
-
+.anchor{
+    background-color: blue;
+    border: 0px;
+}
