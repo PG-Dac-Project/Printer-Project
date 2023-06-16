@@ -12,7 +12,7 @@ import cardImage3 from '../images/printer2.webp'
 import cardImage4 from '../images/home-printer.png'
 
 function Dashboard() {
-    let history=useHistory();ss
+    let history=useHistory();
     var pushEnquiry=()=>{
         history.push("/CreateEnquiry");
     }
