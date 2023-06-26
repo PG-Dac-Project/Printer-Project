@@ -63,3 +63,14 @@ form{
          width: 70% !important;
     }
 }
+.table-responsive{
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(181,181,238,1) 0%, rgba(0,212,255,1) 100%);
+    padding-top: 150px;
+    padding-bottom: 100px;
+    padding-left: 10%;
+    padding-right: 10%;
+}
+.container-fluid{
+    padding-left: 0%;
+    padding-right: 0%;
+}
