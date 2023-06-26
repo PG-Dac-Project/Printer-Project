@@ -63,8 +63,8 @@ function Landing() {
                     <Route exact path="/" component={Home} />
                     <Route exact path='/products' component={Products} />
                     <Route exact path='/Software&Drivers'>{Software}</Route>
-                    <Route path="/dashboard" component={Dashboard} />
-                    <Route path="/about" component={About} />
+                    <Route exact path="/dashboard" component={Dashboard} />
+                    <Route exact path="/about" component={About} />
                     <Route path="/ContactUs" component={ContactUs} />
                     <Route path="/login" component={Login} />
                     <Route exact path='/CreateEnquiry' component={CreateEnquiry} />

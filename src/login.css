@@ -30,3 +30,8 @@ form{
          width: 70% !important;
     }
 }
+@media only screen and (max-width:970px){
+    form{
+         width: 50% !important;
+    }
+}
