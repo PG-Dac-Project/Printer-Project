@@ -10,9 +10,20 @@ import cardImage1 from '../images/best-printer.jpg'
 import cardImage2 from '../images/printer1.jpg'
 import cardImage3 from '../images/printer2.webp'
 import cardImage4 from '../images/home-printer.png'
+import { useEffect, useState } from "react";
 
 function Dashboard() {
+    
     let history=useHistory();
+    useEffect(() => {
+        debugger
+          var check = window.localStorage.getItem("isLogin");
+       if(check==null){
+        history.push("/Login");
+       }
+    });
+
+    
     var pushEnquiry=()=>{
         history.push("/CreateEnquiry");
     }
@@ -27,9 +38,12 @@ function Dashboard() {
     }
     return (
         <div className="container-fluid ">
+        
             <div className='Dashboard-div1-content'>
                 <center>
+                
                     <div className='container card-div'>
+
                         <div className='one-card'>
                             <div class="card" >
                                 <img style={{height:"250px"}} src={cardImage1} class="card-img-top" alt="create_inqury"></img>
@@ -63,8 +77,6 @@ function Dashboard() {
                             </div>
                         </div>
                         
-                        
-
                     </div>
                 </center>
             </div>
