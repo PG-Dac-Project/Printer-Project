@@ -17,6 +17,9 @@ import ViewEnquiryStatus from './Dashboard_Folder/ViewEnquiryStatus';
 import ViewFaq from './Dashboard_Folder/ViewFaq';
 import Register from './Register';
 import { useEffect, useState } from 'react';
+import CheckOtp from './CheckOtp';
+import ResetPassword from './ResetPassword';
+import AgentDashboard from './Dashboard_Folder/AgentDashboard';
 function Landing() {
     const [isLogin, setLogin] = useState(false);
     const [curUser, setcurUser] = useState(null);
@@ -24,8 +27,10 @@ function Landing() {
 
     useEffect(() => {
         debugger
-        setLogin(window.localStorage.getItem("isLogin"));
-        setcurUser(window.localStorage.getItem("token"));
+
+            setLogin(window.localStorage.getItem("isLogin"));
+            setcurUser(window.localStorage.getItem("token"));
+        
 
     },[isLogin]);
 
@@ -36,6 +41,7 @@ function Landing() {
     var PushLogout = () => {
         localStorage.clear();
         setLogin(false);
+        history.push("/Home")  
     }
     return (
         <div className='main-container'>
@@ -113,7 +119,10 @@ function Landing() {
                     <Route exact path='/ViewEnquiryStatus' component={ViewEnquiryStatus} />
                     <Route exact path='/ViewFaq' component={ViewFaq} />
                     <Route exact path='/Register' component={Register} />
-                    <Route path="*" component={Notfound} />
+                    <Route exact path='/CheckOtp' component={CheckOtp} />
+                    <Route exact path='/ResetPassword' component={ResetPassword} />
+                    <Route exact path='/AgentDashboard' component={AgentDashboard} />
+                    <Route path="*" component={Home} />
                 </Switch>
             </div>
             <Footer></Footer>
