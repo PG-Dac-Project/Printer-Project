@@ -5,6 +5,8 @@ import { useHistory } from 'react-router-dom';
 
 function Login() {
   const [Login, setLogin] = useState({ email: '', password: '' });
+  const [msg,setMsg] = useState('');
+
   let history = useHistory();
 
   var formValue = (args) => {
@@ -27,7 +29,15 @@ function Login() {
         if (response.status === 200) {
           window.localStorage.setItem('token', response.data.fname);
           window.localStorage.setItem('isLogin', true);
-          history.push("/Dashboard")
+          if(response.data.role === "Agent"){
+            history.push("/AgentDashboard")
+          }
+          else if(response.data.role === "Technical"){
+
+          }
+          else{
+            history.push("/Dashboard")
+          }
           window.location.reload(false);
         }
         else {
@@ -39,9 +49,26 @@ function Login() {
       .catch((error) => {
         debugger
         console.log(error.data)
-      }
-      )
+      })
   }
+  var sendOtp=()=>{
+    debugger
+    const url = `http://localhost:56304/api/Email/?email=${Login.email}`;
+    axios.get(url)
+    .then((response)=>{
+         debugger
+         if(response.status ===200){
+          window.sessionStorage.setItem("email",Login.email);
+          history.push("/CheckOtp")
+         }
+    })
+    .catch((error)=>{
+       debugger
+       setMsg("Not Resgistered email id");
+    })
+  }
+
+
   return (
     <div className='cont-log'>
       <div>
@@ -62,15 +89,10 @@ function Login() {
           <div class="row mb-4">
             <div class="col d-flex justify-content-center">
 
-              <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="form2Example34" checked />
-                <label class="form-check-label" for="form2Example34"> Remember me </label>
-              </div>
             </div>
 
             <div class="col">
-
-              <a href="#!">Forgot password?</a>
+              <p style={{color:"blue"}} onClick={sendOtp}>Forgot password?</p>
             </div>
           </div>
 
@@ -80,11 +102,16 @@ function Login() {
 
           <div class="text-center">
             <p>Not a member? <a href="/Register">Register</a></p>
+
+          </div>
+          <div class="text-center">
+            <hr></hr>
+            <p style={{color:"red"}}>{msg}</p>
           </div>
         </form>
+
       </div>
     </div>
-
 
   );
 }
