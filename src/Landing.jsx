@@ -12,9 +12,12 @@ import './navbar_use.css'
 import './Container.css'
 import Login from './Login';
 import CreateEnquiry from "./Dashboard_Folder/CreateEnquiry"
-import UpdateEnquiry from './Dashboard_Folder/UpdateEnquiry';
+import UpdateProduct from './Dashboard_Folder/UpdateProduct';
 import ViewEnquiryStatus from './Dashboard_Folder/ViewEnquiryStatus';
 import ViewFaq from './Dashboard_Folder/ViewFaq';
+import ProductRegister from './Dashboard_Folder/ProductRegister';
+import ProductDetails from './Dashboard_Folder/ProductDetails';
+import UpdateEnquiry from './Dashboard_Folder/UpdateEnquiry';
 function Landing() {
 
         let history = useHistory();
@@ -68,8 +71,11 @@ function Landing() {
                     <Route path="/ContactUs" component={ContactUs} />
                     <Route path="/login" component={Login} />
                     <Route exact path='/CreateEnquiry' component={CreateEnquiry} />
-                    <Route exact path='/UpdateEnquiry' component={UpdateEnquiry} />
+                    <Route exact path='/productregister' component={ProductRegister}/>
+                    <Route exact path='/productDetails' component={ProductDetails}/>
+                    <Route exact path='/updateproduct' component={UpdateProduct} />
                     <Route exact path='/ViewEnquiryStatus' component={ViewEnquiryStatus} />
+                    <Route exact path='/updateEnquiry' component={UpdateEnquiry}/>
                     <Route exact path='/ViewFaq' component={ViewFaq} />
                     <Route path="*" component={Notfound} />
                 </Switch>

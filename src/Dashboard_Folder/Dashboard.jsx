@@ -17,7 +17,7 @@ function Dashboard() {
         history.push("/CreateEnquiry");
     }
     var pushUpdate=()=>{
-        history.push("/UpdateEnquiry");
+        history.push("/ProductDetails");
     }
     var pushViewUpdate=()=>{
         history.push("/ViewEnquiryStatus");
@@ -42,7 +42,7 @@ function Dashboard() {
                             <div class="card" >
                                 <img style={{height:"250px"}} src={cardImage2} class="card-img-top" alt="create_inqury"></img>
                                 <div class="card-body">
-                                    <a href="/" class="btn btn-primary active" role="button" data-bs-toggle="button" aria-pressed="true" style={{ backgroundColor: 'blue', border: '0px' }} onClick={pushUpdate}>Update Enquiry {'>>'}</a>
+                                    <a href="/" class="btn btn-primary active" role="button" data-bs-toggle="button" aria-pressed="true" style={{ backgroundColor: 'blue', border: '0px' }} onClick={pushUpdate}>Update Product {'>>'}</a>
                                 </div>
                             </div>
                         </div>
@@ -50,7 +50,7 @@ function Dashboard() {
                             <div class="card" >
                                 <img style={{height:"250px"}} src={cardImage3} class="card-img-top" alt="create_inqury"></img>
                                 <div class="card-body">
-                                    <a href="/" class="btn btn-primary active" role="button" data-bs-toggle="button" aria-pressed="true" style={{ backgroundColor: 'blue', border: '0px' }} onClick={pushViewUpdate}>View Enquiry Status {'>>'}</a>
+                                    <a href="/" class="btn btn-primary active" role="button" data-bs-toggle="button" aria-pressed="true" style={{ backgroundColor: 'blue', border: '0px' }} onClick={pushViewUpdate}>View Enquiry {'>>'}</a>
                                 </div>
                             </div>
                         </div>
