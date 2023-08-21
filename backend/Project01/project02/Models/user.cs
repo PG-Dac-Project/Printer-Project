@@ -14,6 +14,12 @@ namespace project02.Models
     
     public partial class user
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public user()
+        {
+            this.enquiries = new HashSet<enquiry>();
+        }
+    
         public int uid { get; set; }
         public string fname { get; set; }
         public string lname { get; set; }
@@ -24,5 +30,8 @@ namespace project02.Models
         public string area { get; set; }
         public string pincode { get; set; }
         public string role { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<enquiry> enquiries { get; set; }
     }
 }

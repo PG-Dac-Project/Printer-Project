@@ -1,21 +1,113 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="Project_PrinterModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="enquiry">
+    <Key>
+      <PropertyRef Name="eid" />
+    </Key>
+    <Property Name="eid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="enquiry_date" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="completion_date" Type="DateTime" Precision="3" />
+    <Property Name="enquiry_status" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="uid" Type="Int32" Nullable="false" />
+    <Property Name="pid" Type="Int32" Nullable="false" />
+    <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="product" Relationship="Self.fk_enq_product" FromRole="enquiry" ToRole="product" />
+    <NavigationProperty Name="user" Relationship="Self.fk_enq_user" FromRole="enquiry" ToRole="users" />
+    <NavigationProperty Name="technicals" Relationship="Self.fk_tech_enq" FromRole="enquiry" ToRole="technical" />
+  </EntityType>
+  <EntityType Name="product">
+    <Key>
+      <PropertyRef Name="pid" />
+    </Key>
+    <Property Name="pid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="pmodel_name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="purchase_date" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="pserial_no" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="enquiries" Relationship="Self.fk_enq_product" FromRole="product" ToRole="enquiry" />
+  </EntityType>
+  <EntityType Name="technical">
+    <Key>
+      <PropertyRef Name="tid" />
+    </Key>
+    <Property Name="tid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="eid" Type="Int32" Nullable="false" />
+    <Property Name="uid" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="enquiry" Relationship="Self.fk_tech_enq" FromRole="technical" ToRole="enquiry" />
+  </EntityType>
   <EntityType Name="user">
     <Key>
       <PropertyRef Name="uid" />
     </Key>
     <Property Name="uid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="fname" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="fname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="lname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="email" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="mobile" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
     <Property Name="passwd" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="city" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="area" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="pincode" Type="String" MaxLength="6" FixedLength="true" Unicode="false" Nullable="false" />
     <Property Name="role" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="enquiries" Relationship="Self.fk_enq_user" FromRole="users" ToRole="enquiry" />
   </EntityType>
+  <Association Name="fk_enq_product">
+    <End Role="product" Type="Self.product" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="enquiry" Type="Self.enquiry" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="product">
+        <PropertyRef Name="pid" />
+      </Principal>
+      <Dependent Role="enquiry">
+        <PropertyRef Name="pid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_enq_user">
+    <End Role="users" Type="Self.user" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="enquiry" Type="Self.enquiry" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="users">
+        <PropertyRef Name="uid" />
+      </Principal>
+      <Dependent Role="enquiry">
+        <PropertyRef Name="uid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_tech_enq">
+    <End Role="enquiry" Type="Self.enquiry" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="technical" Type="Self.technical" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="enquiry">
+        <PropertyRef Name="eid" />
+      </Principal>
+      <Dependent Role="technical">
+        <PropertyRef Name="eid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <EntityContainer Name="Project_PrinterEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="enquiries" EntityType="Self.enquiry" />
+    <EntitySet Name="products" EntityType="Self.product" />
+    <EntitySet Name="technicals" EntityType="Self.technical" />
     <EntitySet Name="users" EntityType="Self.user" />
+    <AssociationSet Name="fk_enq_product" Association="Self.fk_enq_product">
+      <End Role="product" EntitySet="products" />
+      <End Role="enquiry" EntitySet="enquiries" />
+    </AssociationSet>
+    <AssociationSet Name="fk_enq_user" Association="Self.fk_enq_user">
+      <End Role="users" EntitySet="users" />
+      <End Role="enquiry" EntitySet="enquiries" />
+    </AssociationSet>
+    <AssociationSet Name="fk_tech_enq" Association="Self.fk_tech_enq">
+      <End Role="enquiry" EntitySet="enquiries" />
+      <End Role="technical" EntitySet="technicals" />
+    </AssociationSet>
   </EntityContainer>
 </Schema>

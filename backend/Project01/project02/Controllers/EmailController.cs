@@ -39,7 +39,7 @@ namespace project02.Controllers
                 otp = rnd.Next(1000, 9999).ToString();
 
                 MimeMessage message = new MimeMessage();
-                message.From.Add(new MailboxAddress("Tester", "nishantmukta2000@gmail.com"));
+                message.From.Add(new MailboxAddress("Manager", "nishantmukta2000@gmail.com"));
                 message.To.Add(MailboxAddress.Parse(email));
                 message.Subject = "Verification code from Printer Support Services!!";
                 message.Body = new TextPart("plain")

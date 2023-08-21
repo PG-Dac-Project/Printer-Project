@@ -16,12 +16,14 @@ namespace project02.Controllers
         
         public List<user> Get()
         {
-            return db.Set<user>().ToList(); 
+            var list = (from usr in db.users
+                               select usr).ToList();
+            return list; 
         }
         
         public user Post([FromBody]user us)
         {
-            user detail = (from usr in db.Set<user>().ToList()    
+            user detail = (from usr in db.users    
                          where usr.email == us.email &&
                          usr.passwd == us.passwd
                          select usr).First();

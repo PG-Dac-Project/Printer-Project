@@ -25,6 +25,9 @@ namespace project02.Models
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<enquiry> enquiries { get; set; }
+        public virtual DbSet<product> products { get; set; }
+        public virtual DbSet<technical> technicals { get; set; }
         public virtual DbSet<user> users { get; set; }
     }
 }
