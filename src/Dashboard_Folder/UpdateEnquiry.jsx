@@ -5,7 +5,7 @@ import './dashboard.css'
 import { useState } from 'react'
 import { useEffect } from 'react'
 import axios from 'axios'
-import swal from 'sweetalert'
+import Swal from 'sweetalert2'
 function UpdateEnquiry(props) {
     const[updateEnquiryData,setUpdateEnquiryData]=useState({eid:"",enquiry_date:"",completion_date:"",enquiry_status:"",description:""})
     let history=useHistory();
@@ -17,7 +17,7 @@ function UpdateEnquiry(props) {
         axios.get(`http://localhost:54273/api/UpdateEnquiry/${props.location.state}`)
         .then((response)=>{
             debugger
-            if(response.status==200)
+            if(response.status===200)
             {
                 debugger
                   var data=response.data;
@@ -28,7 +28,11 @@ function UpdateEnquiry(props) {
             debugger
             if(error!=null)
             {
-                swal("Sorry!","Something is went wrong")
+                Swal.fire(
+                    'Sorry!',
+                    'Something went wrong',
+                    'question'
+                  )
             }
         })
     },[])
@@ -48,11 +52,15 @@ function UpdateEnquiry(props) {
         })
         .then((response)=>{
             debugger
-            if(response.status==200)
+            if(response.status===200)
             {
                 if(response.data!=null)
                 {
-                    swal("Congrates!","Enquiry is Updated")
+                    Swal.fire(
+                        'Congrats',
+                        'your Enquiry is Updated',
+                        'success'
+                      )
                     .then(()=>{
                         history.push('/ViewEnquiryStatus')
                     })
@@ -63,7 +71,11 @@ function UpdateEnquiry(props) {
             debugger
             if(error!=null)
             {
-                swal("Sorry!","Something went wrong")
+                Swal.fire(
+                    'Sorry!',
+                    'Something went wrong',
+                    'question'
+                  )
             }
         })
     }

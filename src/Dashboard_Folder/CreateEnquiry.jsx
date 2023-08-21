@@ -1,6 +1,6 @@
 import { useHistory } from 'react-router-dom'
 import { useEffect, useState } from 'react'
-import swal  from 'sweetalert'
+import Swal from 'sweetalert2'
 import '../navbar_use.css'
 import '../Container.css'
 import './dashboard.css'
@@ -34,28 +34,40 @@ function CreateEnquiry() {
             })
             .then((response) => {
                 debugger
-                console.log(response.data);
-                setData(response.data)
-                if(data!=null)
+              //  console.log(response.data);
+                //setData(response.data)
+                if(response.data==0)
                 {
-                    swal("SUCCESS!","Your Enquiry is Accepted")
-                    .then(()=>{
-                        history.push('/Dashboard')
-                    })
-                   
+                    Swal.fire(
+                        'Sorry!',
+                        'Please register product first',
+                        'question'
+                      )
                 }
-                // else if(data==0)
-                // {
-                //     swal("PLease register your product first")
-                // }
-                
-            })
+                else if(response.data==1)
+                {
+                        Swal.fire(
+                            'Your Enquiry is Accepted',
+                            'success'
+                          )
+                        .then(()=>{
+                            history.push('/Dashboard')
+                        })
+                    }
+                   
+                   
+                } )
+           
             .catch((error) => {
                 debugger
                 setError(error)
                 if(error!=null)
                 {
-                    swal("PLease register your product first")
+                    Swal.fire(
+                        'Sorry!',
+                        'Something went wrong',
+                        'question'
+                      )
                     
                 }
                 

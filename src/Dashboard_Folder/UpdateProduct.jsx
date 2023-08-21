@@ -3,7 +3,7 @@ import '../Container.css'
 import './dashboard.css'
 import axios from 'axios'
 import { useState } from 'react'
-import swal from 'sweetalert'
+import Swal from 'sweetalert2'
 import { useEffect } from 'react'
 import { useHistory } from 'react-router-dom'
 function UpdateProduct(props){
@@ -22,7 +22,12 @@ function UpdateProduct(props){
       debugger
       if(error!=null)
       {
-        swal("Sorry!","Something went Wrong")
+        Swal.fire(
+          'Sorry!',
+          'Something went wrong',
+          'question'
+        )
+        // swal("Sorry!","Something went Wrong")
       }
     })
   },[])
@@ -42,7 +47,12 @@ function UpdateProduct(props){
     .then((response)=>{
       if(response.status==200)
       { 
-          swal("Congrates!","you successfully updated product details")
+          // swal("Congrates!","you successfully updated product details")
+          Swal.fire(
+            'Congrats',
+            'you successfully updated product details',
+            'success'
+          )
           .then(()=>{
             history.push('/ProductDetails')
           })  
@@ -51,7 +61,11 @@ function UpdateProduct(props){
     .catch((error)=>{
       if(error!=null)
       {
-        swal("Sorry!","Something went wrong")
+        Swal.fire(
+          'Sorry!',
+          'Something went wrong',
+          'question'
+        )
       }
     })
   }

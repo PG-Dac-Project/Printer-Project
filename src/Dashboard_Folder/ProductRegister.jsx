@@ -4,7 +4,7 @@ import './dashboard.css'
 import {useHistory} from 'react-router-dom'
 import axios from 'axios';
 import { useState } from 'react';
-import swal from 'sweetalert';
+import Swal from 'sweetalert2';
 function ProductRegister() {
   const[productData,setProductData]=useState({modalName:"",purchaseDate:"",productSerialNumber:""});
   let history=useHistory();
@@ -31,10 +31,18 @@ function ProductRegister() {
         { 
           if(response.data==0)
           {
-            swal("Product is already register")
+            Swal.fire(
+              'Product is already register',
+              'Sorry'
+            )
+            // swal("Product is already register")
           }
           else if(response.data==1){
-            swal("Congrats!","your product is register successfully")
+            Swal.fire(
+              'Congrats',
+              'your product is register successfully',
+              'success'
+            )
             .then(()=>{
               history.push('/CreateEnquiry')
             })
@@ -46,7 +54,11 @@ function ProductRegister() {
       debugger
       if(error!=null)
       {
-        swal("Sorry,","Somthing went wrong")
+        Swal.fire(
+          'Sorry!',
+          'Something went wrong',
+          'question'
+        )
       }
     })
   }

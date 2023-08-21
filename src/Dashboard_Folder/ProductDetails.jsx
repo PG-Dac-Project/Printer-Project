@@ -2,7 +2,7 @@ import '../navbar_use.css'
 import '../Container.css'
 import { useHistory } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import swal from 'sweetalert';
+import Swal from 'sweetalert2';
 import axios from 'axios';
 function ProductDetails() {
     debugger
@@ -36,7 +36,11 @@ function ProductDetails() {
             debugger
             if(error!=null)
             {
-                swal("Sorry!","Something went wrong")
+                Swal.fire(
+                    'Sorry!',
+                    'Something went wrong',
+                    'question'
+                  )
             }
         })
     },[])
