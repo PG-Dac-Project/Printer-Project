@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Project_PrinterModelStoreContainer" CdmEntityContainer="Project_PrinterEntities">
+    <EntitySetMapping Name="enquiries">
+      <EntityTypeMapping TypeName="Project_PrinterModel.enquiry">
+        <MappingFragment StoreEntitySet="enquiry">
+          <ScalarProperty Name="eid" ColumnName="eid" />
+          <ScalarProperty Name="enquiry_date" ColumnName="enquiry_date" />
+          <ScalarProperty Name="completion_date" ColumnName="completion_date" />
+          <ScalarProperty Name="enquiry_status" ColumnName="enquiry_status" />
+          <ScalarProperty Name="uid" ColumnName="uid" />
+          <ScalarProperty Name="pid" ColumnName="pid" />
+          <ScalarProperty Name="description" ColumnName="description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="products">
+      <EntityTypeMapping TypeName="Project_PrinterModel.product">
+        <MappingFragment StoreEntitySet="product">
+          <ScalarProperty Name="pid" ColumnName="pid" />
+          <ScalarProperty Name="pmodel_name" ColumnName="pmodel_name" />
+          <ScalarProperty Name="purchase_date" ColumnName="purchase_date" />
+          <ScalarProperty Name="pserial_no" ColumnName="pserial_no" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="technicals">
+      <EntityTypeMapping TypeName="Project_PrinterModel.technical">
+        <MappingFragment StoreEntitySet="technical">
+          <ScalarProperty Name="tid" ColumnName="tid" />
+          <ScalarProperty Name="eid" ColumnName="eid" />
+          <ScalarProperty Name="uid" ColumnName="uid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="users">
+      <EntityTypeMapping TypeName="Project_PrinterModel.user">
+        <MappingFragment StoreEntitySet="users">
+          <ScalarProperty Name="uid" ColumnName="uid" />
+          <ScalarProperty Name="fname" ColumnName="fname" />
+          <ScalarProperty Name="lname" ColumnName="lname" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="mobile" ColumnName="mobile" />
+          <ScalarProperty Name="passwd" ColumnName="passwd" />
+          <ScalarProperty Name="city" ColumnName="city" />
+          <ScalarProperty Name="area" ColumnName="area" />
+          <ScalarProperty Name="pincode" ColumnName="pincode" />
+          <ScalarProperty Name="role" ColumnName="role" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
