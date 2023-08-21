@@ -12,9 +12,14 @@ import './navbar_use.css'
 import './Container.css'
 import Login from './Login';
 import CreateEnquiry from "./Dashboard_Folder/CreateEnquiry"
-import UpdateEnquiry from './Dashboard_Folder/UpdateEnquiry';
+import UpdateProduct from './Dashboard_Folder/UpdateProduct';
 import ViewEnquiryStatus from './Dashboard_Folder/ViewEnquiryStatus';
 import ViewFaq from './Dashboard_Folder/ViewFaq';
+
+import ProductRegister from './Dashboard_Folder/ProductRegister';
+import ProductDetails from './Dashboard_Folder/ProductDetails';
+import UpdateEnquiry from './Dashboard_Folder/UpdateEnquiry';
+
 import Register from './Register';
 import { useEffect, useState } from 'react';
 import CheckOtp from './CheckOtp';
@@ -22,6 +27,7 @@ import ResetPassword from './ResetPassword';
 import AgentDashboard from './Dashboard_Folder/AgentDashboard';
 import AssignedTo from './AssignedTo';
 import AgentUpdateStatus from './AgentUpdateStatus';
+
 function Landing() {
     const [isLogin, setLogin] = useState(false);
     const [curUser, setcurUser] = useState(null);
@@ -117,8 +123,11 @@ function Landing() {
                     <Route path="/ContactUs" component={ContactUs} />
                     <Route path="/login" component={Login} />
                     <Route exact path='/CreateEnquiry' component={CreateEnquiry} />
-                    <Route exact path='/UpdateEnquiry' component={UpdateEnquiry} />
+                    <Route exact path='/productregister' component={ProductRegister}/>
+                    <Route exact path='/productDetails' component={ProductDetails}/>
+                    <Route exact path='/updateproduct' component={UpdateProduct} />
                     <Route exact path='/ViewEnquiryStatus' component={ViewEnquiryStatus} />
+                    <Route exact path='/updateEnquiry' component={UpdateEnquiry}/>
                     <Route exact path='/ViewFaq' component={ViewFaq} />
                     <Route exact path='/Register' component={Register} />
                     <Route exact path='/CheckOtp' component={CheckOtp} />
