@@ -20,6 +20,8 @@ import { useEffect, useState } from 'react';
 import CheckOtp from './CheckOtp';
 import ResetPassword from './ResetPassword';
 import AgentDashboard from './Dashboard_Folder/AgentDashboard';
+import AssignedTo from './AssignedTo';
+import AgentUpdateStatus from './AgentUpdateStatus';
 function Landing() {
     const [isLogin, setLogin] = useState(false);
     const [curUser, setcurUser] = useState(null);
@@ -122,6 +124,8 @@ function Landing() {
                     <Route exact path='/CheckOtp' component={CheckOtp} />
                     <Route exact path='/ResetPassword' component={ResetPassword} />
                     <Route exact path='/AgentDashboard' component={AgentDashboard} />
+                    <Route exact path='/AssignedTo' component={AssignedTo} />
+                    <Route exact path='/AgentUpdateStatus' component={AgentUpdateStatus} />
                     <Route path="*" component={Home} />
                 </Switch>
             </div>
