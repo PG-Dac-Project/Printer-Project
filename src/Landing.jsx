@@ -1,4 +1,4 @@
-import { Link, Switch, Route,useHistory } from 'react-router-dom';
+import { Link, Switch, Route, useHistory } from 'react-router-dom';
 import Home from './Home';
 import Software from './SofwareDrivers';
 import Products from './Products';
@@ -15,15 +15,42 @@ import CreateEnquiry from "./Dashboard_Folder/CreateEnquiry"
 import UpdateProduct from './Dashboard_Folder/UpdateProduct';
 import ViewEnquiryStatus from './Dashboard_Folder/ViewEnquiryStatus';
 import ViewFaq from './Dashboard_Folder/ViewFaq';
+
 import ProductRegister from './Dashboard_Folder/ProductRegister';
 import ProductDetails from './Dashboard_Folder/ProductDetails';
 import UpdateEnquiry from './Dashboard_Folder/UpdateEnquiry';
-function Landing() {
 
-        let history = useHistory();
-        var PushSome = () => {
-            history.push("/Login");
-        }
+import Register from './Register';
+import { useEffect, useState } from 'react';
+import CheckOtp from './CheckOtp';
+import ResetPassword from './ResetPassword';
+import AgentDashboard from './Dashboard_Folder/AgentDashboard';
+import AssignedTo from './AssignedTo';
+import AgentUpdateStatus from './AgentUpdateStatus';
+
+function Landing() {
+    const [isLogin, setLogin] = useState(false);
+    const [curUser, setcurUser] = useState(null);
+    // wheneever isLogin is chnage this useEffect is get called
+
+    useEffect(() => {
+        debugger
+
+            setLogin(window.localStorage.getItem("isLogin"));
+            setcurUser(window.localStorage.getItem("token"));
+        
+
+    },[isLogin]);
+
+    let history = useHistory();
+    var PushSome = () => {
+        history.push("/Login");
+    }
+    var PushLogout = () => {
+        localStorage.clear();
+        setLogin(false);
+        history.push("/Home")  
+    }
     return (
         <div className='main-container'>
             <Header></Header>
@@ -54,10 +81,35 @@ function Landing() {
                                 <li class="nav-item">
                                     <Link to="/ContactUs" className="nav-link active ">ContactUS</Link>
                                 </li>
-                                <li class="nav-item">
-                                     <button class="btn btn-warning" type="submit" onClick={PushSome}>Log In</button>
-                                </li>
-                                
+                                <nav navbar>
+                                    {
+                                        isLogin && (
+                                            <>
+                                                <div>
+                                                    <li class="nav-item">
+                                                        <h6>Welcome {curUser}</h6>
+                                                    </li>
+                                                </div>
+                                                <div>
+                                                    <li class="nav-item">
+                                                        <button class="btn btn-warning" type="submit" onClick={PushLogout}>Log out</button>
+                                                    </li>
+                                                </div>
+
+                                            </>
+                                        )
+                                    }
+                                    {
+                                        !isLogin && (
+                                            <div>
+                                                <li class="nav-item">
+                                                    <button class="btn btn-warning" type="submit" onClick={PushSome}>Log in</button>
+                                                </li>
+                                            </div>
+                                        )
+                                    }
+                                </nav>
+
                             </ul>
                         </div>
                     </div>
@@ -77,7 +129,13 @@ function Landing() {
                     <Route exact path='/ViewEnquiryStatus' component={ViewEnquiryStatus} />
                     <Route exact path='/updateEnquiry' component={UpdateEnquiry}/>
                     <Route exact path='/ViewFaq' component={ViewFaq} />
-                    <Route path="*" component={Notfound} />
+                    <Route exact path='/Register' component={Register} />
+                    <Route exact path='/CheckOtp' component={CheckOtp} />
+                    <Route exact path='/ResetPassword' component={ResetPassword} />
+                    <Route exact path='/AgentDashboard' component={AgentDashboard} />
+                    <Route exact path='/AssignedTo' component={AssignedTo} />
+                    <Route exact path='/AgentUpdateStatus' component={AgentUpdateStatus} />
+                    <Route path="*" component={Home} />
                 </Switch>
             </div>
             <Footer></Footer>
