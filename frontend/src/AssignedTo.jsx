@@ -10,12 +10,19 @@ function AssignedTo(props) {
     debugger
     //   const[msg,setMsg] = useState('');
     const [tpersons, setTpersons] = useState([]);
+    const [selectOption,setselectOption] = useState('');
     const [assignDetail,setAssignDetail] = useState({
         eid:props.location.state.eid,
        
     });
 
+    const onOptionChangeHandler = (event) => {
+           setselectOption(event.target.value);
+    }
+
     let history = useHistory();
+
+    const options = ['One', 'Two', 'Three', 'Four', 'Five'];
 
     useEffect(() => {
         const url = 'http://localhost:56304/api/AgentAssignTo';
@@ -44,7 +51,7 @@ function AssignedTo(props) {
     const url = 'http://localhost:56304/api/AgentAssignTo';
     axios.post(url,{
         eid:assignDetail.eid,
-        uid:assignDetail.tid
+        uid:selectOption
     })
         .then((response) => {
             debugger
@@ -80,17 +87,21 @@ function AssignedTo(props) {
                     </div>
 
                     <div class="form-outline mb-4">
-                        <select class="form-select" name='tid' value={tpersons} onChange={formValue} >
+                        <select class="form-select" name='tid' onChange={onOptionChangeHandler} >
                             <option selected>Select one</option>
                             {
-                                tpersons.map((sdata) => {
+                                tpersons.map((sdata,index) => {
                                 return (
-                                    <option value={sdata.uid}> id {sdata.uid}:{sdata.fname} </option>
+                                    <option value={sdata.uid} key={index}> id {sdata.uid}:{sdata.fname} </option>
                                 )
                                 })
                             }
 
                         </select>
+
+
+
+               
                        
                     </div>
 
