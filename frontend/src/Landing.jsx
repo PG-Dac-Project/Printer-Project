@@ -27,6 +27,7 @@ import ResetPassword from './ResetPassword';
 import AgentDashboard from './Dashboard_Folder/AgentDashboard';
 import AssignedTo from './AssignedTo';
 import AgentUpdateStatus from './AgentUpdateStatus';
+import Technical from './Technical';
 
 function Landing() {
     const [isLogin, setLogin] = useState(false);
@@ -135,6 +136,7 @@ function Landing() {
                     <Route exact path='/AgentDashboard' component={AgentDashboard} />
                     <Route exact path='/AssignedTo' component={AssignedTo} />
                     <Route exact path='/AgentUpdateStatus' component={AgentUpdateStatus} />
+                    <Route exact path='/Technical' component={Technical} />
                     <Route path="*" component={Home} />
                 </Switch>
             </div>

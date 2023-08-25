@@ -1,26 +1,29 @@
-import '../navbar_use.css'
-import '../Container.css'
-import { useHistory } from 'react-router-dom';
+import './navbar_use.css'
+import './Container.css'
+//import { useHistory } from 'react-router-dom';
 import { useState } from 'react';
 import { useEffect } from 'react';
 import axios from 'axios';
 import Swal from 'sweetalert2';
-function ViewEnquiryStatus() {
+function Technical() {
     const[viewEnquiryData,setViewEnquiryData]=useState([]);
-    let history=useHistory();
-    var pushUpdateEnquiry=(eid)=>{
-        debugger
-        history.push('/UpdateEnquiry',eid)
-    }
-    var uid=window.localStorage.getItem('uid');
+    //let history=useHistory();
+    // var pushUpdateEnquiry=(eid)=>{
+    //     debugger
+    //     history.push('/UpdateEnquiry',eid)
+    // }
+    
     useEffect(()=>{
         debugger
-        axios.get(`http://localhost:56304/api/Enquiry/${uid}`)
+        var uid=window.localStorage.getItem('uid');
+        axios.get(`http://localhost:56304/api/Technical/${uid}`)
         .then((response)=>{
+            debugger
             var data=response.data;
             setViewEnquiryData(data);
         })
         .catch((error)=>{
+            debugger
             if(error!=null)
             {
                 Swal.fire(
@@ -40,27 +43,27 @@ function ViewEnquiryStatus() {
                             <thead class="table-dark">
                                 <tr>
                                     <th>Enquiry Id</th>
-                                    <th>Model Name</th>
-                                    <th>Product Serial Number</th>
-                                    <th>Description</th>
+                                    <th>Customer Name</th>
                                     <th>Enquiry Date</th>
                                     <th>Completion Date</th>
                                     <th>Enquiry Status</th>
+                                    <th>Description</th>
+                                    
                                 </tr>
                             </thead>
                             <tbody>{
                                 viewEnquiryData.map((currentEnquiryData)=>{
                                 return <tr key={currentEnquiryData.eid}>
                                         <td>{currentEnquiryData.eid}</td>
-                                        <td>{currentEnquiryData.pmodel_name}</td>
-                                        <td>{currentEnquiryData.pserial_no}</td>
-                                        <td>{currentEnquiryData.description}</td>
+                                        <td>{currentEnquiryData.fname}</td>
                                         <td>{currentEnquiryData.enquiry_date}</td>
                                         <td>{currentEnquiryData.completion_date}</td>
                                         <td>{currentEnquiryData.enquiry_status}</td>
-                                        <td><button type='button' className='btn btn-primary'onClick={()=>{
+                                        <td>{currentEnquiryData.description}</td>
+                                       
+                                        {/* <td><button type='button' className='btn btn-primary'onClick={()=>{
                                             pushUpdateEnquiry(currentEnquiryData.eid)
-                                        }}>Edit</button></td>             
+                                        }}>Edit</button></td>              */}
                                 </tr>
                                 })
                             }</tbody>
@@ -71,4 +74,4 @@ function ViewEnquiryStatus() {
         </div>
     )
 }
-export default ViewEnquiryStatus;
+export default Technical;
