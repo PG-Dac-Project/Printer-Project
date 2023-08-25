@@ -1,0 +1,21 @@
+
+.profile-layout{
+    width: 30%;
+    background-color: white;
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
+}
+
+.profile-flex{
+
+    display: flex;
+    flex-wrap: wrap ;
+    justify-content: center;
+}
+.profile-div{
+    padding-right: 30px;
+    background-color: cornsilk;
+    border: 2px solid black;
+    margin: 10px;
+}
