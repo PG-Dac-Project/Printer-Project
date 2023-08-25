@@ -25,7 +25,7 @@ function CreateEnquiry() {
 
     var onProductRegister = () => {
         debugger;
-        const url = `http://localhost:54273/api/Enquiry/${enquiryDetails.serialNumber}`;
+        const url = `http://localhost:56304/api/Enquiry/${enquiryDetails.serialNumber}`;
         axios.put(url,
             {
                 serialNumber: enquiryDetails.serialNumber,

@@ -14,7 +14,7 @@ function UpdateEnquiry(props) {
     }
     useEffect(()=>{
         debugger
-        axios.get(`http://localhost:54273/api/UpdateEnquiry/${props.location.state}`)
+        axios.get(`http://localhost:56304/api/UpdateEnquiry/${props.location.state}`)
         .then((response)=>{
             debugger
             if(response.status===200)
@@ -43,7 +43,7 @@ function UpdateEnquiry(props) {
     }
     var updateEnquiryDetails=()=>{
         debugger
-        axios.post("http://localhost:54273/api/Enquiry",{
+        axios.post("http://localhost:56304/api/Enquiry",{
             eid:updateEnquiryData.eid,
             enquiry_date:updateEnquiryData.enquiry_date,
             completion_date:updateEnquiryData.completion_date,

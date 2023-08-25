@@ -12,7 +12,7 @@ function UpdateProduct(props){
   const[updateData,setUpdateData]=useState({pmodel_name:"",purchase_date:"",pserial_no:""})
   useEffect(()=>{
     debugger
-    axios.get(`http://localhost:54273/api/Update/${props.location.state}`)
+    axios.get(`http://localhost:56304/api/Update/${props.location.state}`)
     .then((response)=>{
       debugger
       var data=response.data;
@@ -38,7 +38,7 @@ function UpdateProduct(props){
     setUpdateData(copyUpdateDate);
   }
   var toProductUpdate=()=>{
-    axios.put(`http://localhost:54273/api/Product/${props.location.state}`,
+    axios.put(`http://localhost:56304/api/Product/${props.location.state}`,
     {
       pmodel_name:updateData.pmodel_name,
       purchase_date:updateData.purchase_date,
