@@ -19,9 +19,9 @@ function ProductDetails() {
     }
     useEffect(()=>{
         debugger
-        // window.sessionStorage.getItem("uid");
-        var uid=3;
-        axios.get(`http://localhost:54273/api/Product/${uid}`)
+        
+        var uid=window.localStorage.getItem('uid');
+        axios.get(`http://localhost:56304/api/Product/${uid}`)
         .then((response)=>{
             debugger
             if(response.status==200)
