@@ -16,10 +16,10 @@ function ProductRegister() {
     copyProductData[args.target.name]=args.target.value;
     setProductData(copyProductData);
   }
-  //const url="http://localhost:54273/api/Product"
+  //const url="http://localhost:56304/api/Product"
   var submitProductDetails=()=>{
     debugger
-    const url="http://localhost:54273/api/Product"
+    const url="http://localhost:56304/api/Product"
     axios.post(url,{
       pmodel_name:productData.modalName,
       purchase_date:productData.purchaseDate,
