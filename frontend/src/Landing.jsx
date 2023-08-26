@@ -27,7 +27,11 @@ import ResetPassword from './ResetPassword';
 import AgentDashboard from './Dashboard_Folder/AgentDashboard';
 import AssignedTo from './AssignedTo';
 import AgentUpdateStatus from './AgentUpdateStatus';
+
+import Profile from './Profile';
+
 import Technical from './Technical';
+
 
 function Landing() {
     const [isLogin, setLogin] = useState(false);
@@ -49,8 +53,11 @@ function Landing() {
     }
     var PushLogout = () => {
         localStorage.clear();
-        setLogin(false);
-        history.push("/Home")  
+        window.localStorage.removeItem("isLogin");
+        window.localStorage.removeItem("token");
+        history.push("/Home")
+        window.location.reload(true)
+          
     }
     return (
         <div className='main-container'>
@@ -68,9 +75,6 @@ function Landing() {
                                     <Link to="/" className="nav-link active "> Home </Link>
                                 </li>
                                 <li class="nav-item">
-                                    <Link to="/products" className="nav-link active ">Products</Link>
-                                </li>
-                                <li class="nav-item">
                                     <Link to="/Software&Drivers" className="nav-link active ">Software & Drivers</Link>
                                 </li>
                                 <li class="nav-item">
@@ -82,15 +86,18 @@ function Landing() {
                                 <li class="nav-item">
                                     <Link to="/ContactUs" className="nav-link active ">ContactUS</Link>
                                 </li>
+                                <li class="nav-item">
+                                    <Link to="/Profile" className="nav-link active ">Profile</Link>
+                                </li>
                                 <nav navbar>
                                     {
                                         isLogin && (
                                             <>
-                                                <div>
+                                                {/* <div>
                                                     <li class="nav-item">
                                                         <h6>Welcome {curUser}</h6>
                                                     </li>
-                                                </div>
+                                                </div> */}
                                                 <div>
                                                     <li class="nav-item">
                                                         <button class="btn btn-warning" type="submit" onClick={PushLogout}>Log out</button>
@@ -136,7 +143,11 @@ function Landing() {
                     <Route exact path='/AgentDashboard' component={AgentDashboard} />
                     <Route exact path='/AssignedTo' component={AssignedTo} />
                     <Route exact path='/AgentUpdateStatus' component={AgentUpdateStatus} />
+
+                    <Route exact path='/Profile' component={Profile} />
+
                     <Route exact path='/Technical' component={Technical} />
+
                     <Route path="*" component={Home} />
                 </Switch>
             </div>

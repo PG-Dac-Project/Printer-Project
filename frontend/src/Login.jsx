@@ -28,7 +28,11 @@ function Login() {
         debugger
         if (response.status === 200) {
           window.localStorage.setItem('token', response.data.fname);
+
+          window.localStorage.setItem('role',response.data.role);
+
           window.localStorage.setItem('uid',response.data.uid);
+
           window.localStorage.setItem('isLogin', true);
           if(response.data.role === "Agent"){
             history.push("/AgentDashboard")

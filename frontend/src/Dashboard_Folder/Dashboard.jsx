@@ -21,6 +21,18 @@ function Dashboard() {
        if(check==null){
         history.push("/Login");
        }
+       else{
+        const r = window.localStorage.getItem("role");
+        if(r === "Agent"){
+            history.push("/AgentDashboard")
+          }
+          else if(r === "Technical"){
+
+          }
+          else{
+            history.push("/Dashboard")
+          }
+       }
     });
 
     
@@ -43,7 +55,7 @@ function Dashboard() {
                 <center>
                 
                     <div className='container card-div'>
-
+                        
                         <div className='one-card'>
                             <div class="card" >
                                 <img style={{height:"250px"}} src={cardImage1} class="card-img-top" alt="create_inqury"></img>
@@ -52,6 +64,7 @@ function Dashboard() {
                                 </div>
                             </div>
                         </div>
+                        
                         <div className='one-card'>
                             <div class="card" >
                                 <img style={{height:"250px"}} src={cardImage2} class="card-img-top" alt="create_inqury"></img>
