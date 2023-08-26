@@ -21,9 +21,9 @@ function Header()
                       {
                                         isLogin && (
                                             <>
-                                                <div style={{color:"white",fontFamily:"fantasy"}}>
+                                                <div style={{color:"white",fontFamily:"serif"}}>
                                                  
-                                                        <h2>Welcome {curUser}</h2>
+                                                        <h2>Welcome,&nbsp;{curUser}</h2>
                                                 
                                                 </div>
                                             </>

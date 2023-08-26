@@ -3,9 +3,10 @@ import './login.css'
 import './profile.css'
 
 import { useState } from 'react';
+
+import image from './images/user.png'
+import { useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
-
-
 function Profile(){
     const[user,setUser] = useState({
         fname:'',
@@ -15,9 +16,31 @@ function Profile(){
         city:'',
         area:'',
         pincode:'',
-
         role:''
       });
+      let history=useHistory();
+
+      useEffect(() => {
+        debugger
+          var check = window.localStorage.getItem("isLogin");
+       if(check==null){
+        history.push("/Login");
+       }
+       else{
+        var sendid = parseInt(window.localStorage.getItem("uid"));
+        const url = `http://localhost:56304/api/Users/?uid=${sendid}`
+          axios.get(url)
+          .then((response)=>{
+            debugger
+            var sdata = response.data;
+            setUser(sdata);
+          })
+          .catch((error)=>{
+            debugger
+          })
+
+       }
+    });
 
       var EditProfile = () =>{
              
@@ -28,46 +51,46 @@ function Profile(){
         <div className='cont-log'>
         <div className='profile-layout'>
 
-                <div style={{height:"30px",width:"30px"}}>
-                <i class="fa-solid fa-user"></i>
+                <div >
+                <img style={{height:"120px",width:"120px"}} src={image} class="card-img-top" alt="create_inqury"></img>
                 </div>
-                <h4 className='text-center'> Update Profile </h4>
+                <h4 className='text-center'> Update Profile </h4>    
             <div className='profile-flex'>
             <div className='profile-div'>
-              <label class="form-label" for="form2Example1"><strong>First Name:</strong> </label>
-              <label class="form-label" for="form2Example1">{user.fname}  Nishant </label>
+              <label class="form-label" for="form2Example1"><strong>First Name:&nbsp;</strong> </label>
+              <label class="form-label" for="form2Example1">{user.fname}   </label>
             </div>
 
             <div className='profile-div'>
-              <label class="form-label" for="form2Example2"><strong>Last Name:</strong></label>
-              <label class="form-label" for="form2Example1">{user.lname} Mukta </label>
+              <label class="form-label" for="form2Example2"><strong>Last Name:&nbsp;</strong></label>
+              <label class="form-label" for="form2Example1">{user.lname}  </label>
             </div>
 
             <div className='profile-div'>
-              <label class="form-label" for="form2Example2"><strong>Email ID:</strong></label>
-              <label class="form-label" for="form2Example1">{user.email} nishantmukta2000@gmail.com </label>
+              <label class="form-label" for="form2Example2"><strong>Email ID:&nbsp;</strong></label>
+              <label class="form-label" for="form2Example1">{user.email}  </label>
             </div>
   
             <div className='profile-div'>
-              <label class="form-label" for="form2Example2"><strong>Mobile No:</strong></label>
-              <label class="form-label" for="form2Example1">{user.mobile} 9834904208</label>
+              <label class="form-label" for="form2Example2"><strong>Mobile No:&nbsp;</strong></label>
+              <label class="form-label" for="form2Example1">{user.mobile} </label>
             </div>
 
             <div className='profile-div'>
-              <label class="form-label" for="form2Example2"><strong>City:</strong></label>
-              <label class="form-label" for="form2Example1">{user.city} City </label>
+              <label class="form-label" for="form2Example2"><strong>City:&nbsp;</strong></label>
+              <label class="form-label" for="form2Example1">{user.city}  </label>
 
             </div>
             
             <div className='profile-div'>
-              <label class="form-label" for="form2Example2"><strong>Area:</strong></label>
-              <label class="form-label" for="form2Example1">{user.area} Area</label>
+              <label class="form-label" for="form2Example2"><strong>Area:&nbsp;</strong></label>
+              <label class="form-label" for="form2Example1">{user.area} </label>
 
             </div>
            
             <div className='profile-div'>
-              <label class="form-label" for="form2Example2"> <strong>Pincode :</strong></label>
-              <label class="form-label" for="form2Example1">{user.pincode} Pincode</label>
+              <label class="form-label" for="form2Example2"> <strong>Pincode :&nbsp;</strong></label>
+              <label class="form-label" for="form2Example1">{user.pincode} </label>
 
             </div>
   
