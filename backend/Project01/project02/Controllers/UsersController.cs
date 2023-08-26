@@ -14,10 +14,11 @@ namespace project02.Controllers
     {
         Project_PrinterEntities db = new Project_PrinterEntities();
         
-        public List<user> Get()
+        public user Get(int uid)
         {
             var list = (from usr in db.users
-                               select usr).ToList();
+                        where usr.uid == uid
+                               select usr).First();
             return list; 
         }
         
