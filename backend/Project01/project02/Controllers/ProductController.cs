@@ -7,11 +7,13 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Cors;
+using project02.Filters;
 using project02.Models;
 
 namespace project02.Controllers
 {
     [EnableCors(origins:"*",headers:"*",methods:"*")]
+    [JwtAuthentication]
     public class ProductController : ApiController
     {
         Project_PrinterEntities db = new Project_PrinterEntities();

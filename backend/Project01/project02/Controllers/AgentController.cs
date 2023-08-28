@@ -1,4 +1,5 @@
-﻿using project02.Models;
+﻿using project02.Filters;
+using project02.Models;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -16,6 +17,7 @@ namespace project02.Controllers
     public class AgentController : ApiController
     {
         Project_PrinterEntities db = new Project_PrinterEntities();
+        [JwtAuthentication]
         public HttpResponseMessage Get()
         {
             //var data = (from us in db.users

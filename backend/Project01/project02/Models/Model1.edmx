@@ -39,15 +39,15 @@
             <PropertyRef Name="uid" />
           </Key>
           <Property Name="uid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="fname" Type="varchar" MaxLength="20" Nullable="false" />
-          <Property Name="lname" Type="varchar" MaxLength="20" Nullable="false" />
-          <Property Name="email" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="fname" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="lname" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="email" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="mobile" Type="char" MaxLength="10" Nullable="false" />
-          <Property Name="passwd" Type="varchar" MaxLength="20" Nullable="false" />
-          <Property Name="city" Type="varchar" MaxLength="20" Nullable="false" />
-          <Property Name="area" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="passwd" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="city" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="area" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="pincode" Type="char" MaxLength="6" Nullable="false" />
-          <Property Name="role" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="role" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <Association Name="fk_enq_product">
           <End Role="product" Type="Self.product" Multiplicity="1">
@@ -152,15 +152,15 @@
             <PropertyRef Name="uid" />
           </Key>
           <Property Name="uid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="fname" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="lname" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="email" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="fname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="lname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="mobile" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
-          <Property Name="passwd" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="city" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="area" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="passwd" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="city" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="area" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="pincode" Type="String" MaxLength="6" FixedLength="true" Unicode="false" Nullable="false" />
-          <Property Name="role" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="role" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="enquiries" Relationship="Self.fk_enq_user" FromRole="users" ToRole="enquiry" />
         </EntityType>
         <Association Name="fk_enq_product">
