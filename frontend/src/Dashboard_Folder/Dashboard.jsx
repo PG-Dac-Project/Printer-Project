@@ -27,7 +27,7 @@ function Dashboard() {
             history.push("/AgentDashboard")
           }
           else if(r === "Technical"){
-
+              history.push("/Technical");
           }
           else{
             history.push("/Dashboard")

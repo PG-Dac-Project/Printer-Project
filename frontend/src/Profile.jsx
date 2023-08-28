@@ -5,6 +5,7 @@ import './profile.css'
 import { useState } from 'react';
 
 import image from './images/user.png'
+
 import { useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 function Profile(){
@@ -32,18 +33,22 @@ function Profile(){
           axios.get(url)
           .then((response)=>{
             debugger
-            var sdata = response.data;
-            setUser(sdata);
+              if(response.status === 200){
+                var sdata = response.data;
+                setUser(sdata);
+              }
+                  
           })
           .catch((error)=>{
             debugger
           })
 
        }
-    });
+    },[]);
 
       var EditProfile = () =>{
-             
+             debugger
+             history.push("/EditProfile")
       }
     return(
         <div>
