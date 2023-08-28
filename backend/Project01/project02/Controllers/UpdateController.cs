@@ -1,4 +1,5 @@
-﻿using project02.Models;
+﻿using project02.Filters;
+using project02.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,6 +11,7 @@ using System.Web.Http.Cors;
 namespace project02.Controllers
 {
     [EnableCors(origins: "*", headers: "*", methods: "*")]
+    [JwtAuthentication]
     public class UpdateController : ApiController
     {
         Project_PrinterEntities db = new Project_PrinterEntities();
