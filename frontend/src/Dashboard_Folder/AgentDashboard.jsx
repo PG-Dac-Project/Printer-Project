@@ -7,7 +7,7 @@ import { useHistory } from 'react-router-dom';
 import { useEffect } from 'react';
 import axios from 'axios';
 
-
+import Swal from 'sweetalert2';
 function AgentDashboard() {
 
     const [data, setData] = useState([]);
@@ -32,6 +32,13 @@ var handleAssignTo = (arg) =>{
     history.push("/AssignedTo",arg);
 }
     useEffect(() => {
+
+        // const config = {
+        //     headers:{
+        //         Authorization:'Bearer '+localStorage.getItem('jwtToken')
+        //     }
+        // }
+
         const url = 'http://localhost:56304/api/Agent';
         axios.get(url)
             .then((response) => {
@@ -42,6 +49,23 @@ var handleAssignTo = (arg) =>{
             })
             .catch((error) => {
                 debugger
+
+                //unauthorized user
+                if(error.response.status===401){
+                    Swal.fire(
+                        'Sorry!',
+                        'Your are Unauthorized User??',
+                        'error'
+                      )
+                      .then(() => {
+                        localStorage.clear();
+                        window.localStorage.removeItem("isLogin");
+                        window.localStorage.removeItem("token");
+                        history.push("/Login")
+                        window.location.reload(true)
+                        
+                      })
+                }
             })
     }, []);
 

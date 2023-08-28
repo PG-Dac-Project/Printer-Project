@@ -1,10 +1,12 @@
+
 import axios from 'axios';
 import './login.css'
 import { useState } from 'react';
 import Swal from 'sweetalert2';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
+import { useEffect } from 'react';
 
-function Register() {
+function EditProfile() {
   const [user, setUser] = useState({
     fname: '',
     lname: '',
@@ -13,15 +15,38 @@ function Register() {
     city: '',
     area: '',
     pincode: '',
-    password: '',
-    cpassword: '',
-    role: ''
+    passwd: '',
   });
 
   let history = useHistory();
   //for error state
   const [errors, setErrors] = useState({});
 
+  // useEffect
+  useEffect(() => {
+    debugger
+      var check = window.localStorage.getItem("isLogin");
+   if(check==null){
+    history.push("/Login");
+   }
+   else{
+    var sendid = parseInt(window.localStorage.getItem("uid"));
+    const url = `http://localhost:56304/api/Users/?uid=${sendid}`
+      axios.get(url)
+      .then((response)=>{
+        debugger
+          if(response.status === 200){
+            var sdata = response.data;
+            setUser(sdata);
+          }
+              
+      })
+      .catch((error)=>{
+        debugger
+      })
+
+   }
+},[]);
 
   var handleChange = (args) => {
     var copyOfuser = { ...user };
@@ -38,10 +63,7 @@ function Register() {
       newErrors.name = 'Name is required';
       valid = false;
     }
-    if (user.cpassword.trim() === '') {
-      newErrors.cpassword = 'password is required';
-      valid = false;
-    }
+
     if (user.lname.trim() === '') {
       newErrors.fname = 'last name is required';
       valid = false;
@@ -54,24 +76,18 @@ function Register() {
       newErrors.area = 'area is required';
       valid = false;
     }
-    if (user.role.trim() === '') {
-      newErrors.role = 'Please Select  your role';
-      valid = false;
-    }
+
 
     if (!user.email.match(/^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/)) {
       newErrors.email = 'Invalid email address';
       valid = false;
     }
-    // Add password validation (e.g., minimum length of 8 characters)
-    if (user.password.length < 8) {
-      newErrors.password = 'Password must be at least 8 characters long';
-      valid = false;
+      // Add password validation (e.g., minimum length of 8 characters)
+    if (user.passwd.length < 8) {
+       newErrors.passwd = 'Password must be at least 8 characters long';
+       valid = false;
     }
-    if (!user.password === user.cpassword) {
-      newErrors.cpassword = 'Password is not Matching';
-      valid = false;
-    }
+
 
     // add validation of  10 digit 
     if (!user.mobile.match(/^\d{10}$/)) {
@@ -92,14 +108,16 @@ function Register() {
   var handleRegister = () => {
     debugger
     if (validateForm()) {
-      const url = 'http://localhost:56304/api/Register';
+      const url = 'http://localhost:56304/api/UpdateProfile';
+      var id = parseInt(window.localStorage.getItem("uid"));
       axios.post(url,
         {
+          uid:id,
           fname: user.fname,
           lname: user.lname,
           email: user.email,
           mobile: user.mobile,
-          passwd: user.password,
+          passwd: user.passwd,
           city: user.city,
           area: user.area,
           pincode: user.pincode,
@@ -129,14 +147,12 @@ function Register() {
 
             Swal.fire(
               'Great!',
-              'Your Registration is successfully!',
+              'Your Profile Updated  successfully!',
               'success'
             )
-              .then(() => {
-                history.push('/Dashboard')
-              })
-
-
+            .then(()=>{
+              history.push('/Profile')
+          })
           }
           else {
 
@@ -150,9 +166,6 @@ function Register() {
             'Something went wrong',
             'question'
           )
-
-
-
         })
     }
 
@@ -208,30 +221,12 @@ function Register() {
           </div>
 
           <div class="form-outline mb-4">
-            <input type="password" name='password' value={user.password} onChange={handleChange} class="form-control" />
+            <input type="password" name='password' value={user.passwd} onChange={handleChange} class="form-control" />
             <label class="form-label" for="form2Example2"><strong>Password</strong></label>
-            {errors.password && <div style={{ color: "red" }} className="error">{errors.password}</div>}
+            {errors.passwd && <div style={{ color: "red" }} className="error">{errors.passwd}</div>}
           </div>
 
-          <div class="form-outline mb-4">
-            <input type="password" name='cpassword' placeholder='Confirm Password' value={user.cpassword} onChange={handleChange} class="form-control" />
-            <label class="form-label" for="form2Example2"><strong>Confirm Password</strong></label>
-            {errors.cpassword && <div style={{ color: "red" }} className="error">{errors.cpassword}</div>}
-          </div>
-
-          <div class="form-outline mb-4">
-            <select class="form-select" name='role' value={user.role} onChange={handleChange} >
-              <option selected>Select one</option>
-              <option value="Technical">Technical Person</option>
-              <option value="Customer">Customer</option>
-            </select>
-            <label class="form-label" for="form2Example2"><strong>Register  As</strong></label>
-            {errors.role && <div style={{ color: "red" }} className="error">{errors.role}</div>}
-          </div>
-
-
-
-          <button type="button" onClick={handleRegister} class="btn btn-primary btn-block mb-4">Register Here</button>
+          <button type="button" onClick={handleRegister} class="btn btn-primary btn-block mb-4">Update Profile</button>
 
         </form>
 
@@ -241,4 +236,4 @@ function Register() {
   )
 }
 
-export default Register;
+export default EditProfile;
