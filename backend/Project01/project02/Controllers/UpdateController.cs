@@ -18,12 +18,12 @@ namespace project02.Controllers
         // GET: api/Update
         [HttpPost]
         [Route("api/Update/Warrenty")]
-        public int Warrenty([FromBody]product value)
+        public int Warrenty([FromBody] product value)
         {
 
-            DateTime date =value.purchase_date;
-           var warrentyDate =DateTime.Now - date;
-            int day=warrentyDate.Days;
+            DateTime date = value.purchase_date;
+            var warrentyDate = DateTime.Now - date;
+            int day = warrentyDate.Days;
             if (day <= 365)
             {
                 return 1;
@@ -32,23 +32,23 @@ namespace project02.Controllers
             {
                 return 0;
             }
-            
+
         }
 
         // GET: api/Update/5
         public product Get(int id)
         {
-           product pd= db.products.Find(id);
+            product pd = db.products.Find(id);
             return pd;
         }
 
         // POST: api/Update
-        public void Post([FromBody]string value)
+        public void Post([FromBody] string value)
         {
         }
 
         // PUT: api/Update/5
-        public void Put(int id, [FromBody]string value)
+        public void Put(int id, [FromBody] string value)
         {
         }
 

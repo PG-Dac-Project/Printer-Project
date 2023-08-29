@@ -15,9 +15,9 @@ namespace project02
             config.Filters.Add(new AuthorizeAttribute());
             // Web API routes
             config.MapHttpAttributeRoutes();
+            config.Services.Replace(typeof(IExceptionHandler), new CustomExceptionHandler.CustomExceptionHandler());
 
             config.EnableCors();
-            config.Services.Replace(typeof(IExceptionHandler), new CustomExceptionHandler.CustomExceptionHandler());
 
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",

@@ -184,14 +184,7 @@
     <Compile Include="Controllers\UpdateEnquiryController.cs" />
     <Compile Include="Controllers\UpdateProfileController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
-
     <Compile Include="CustomExceptionHandler\ClustomExceptionHandler.cs" />
-    <Compile Include="Global.asax.cs">
-      <DependentUpon>Global.asax</DependentUpon>
-    </Compile>
-    <Compile Include="Logger\Logger.cs" />
-    <Compile Include="Logger\MyFilter.cs" />
-
     <Compile Include="Filters\AddChallengeOnUnauthorizedResult.cs" />
     <Compile Include="Filters\AuthenticationFailureResult.cs" />
     <Compile Include="Filters\HttpAuthenticationChallengeContextExtensions.cs" />
@@ -200,7 +193,8 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="JwtManager.cs" />
-
+    <Compile Include="Logger\Logger.cs" />
+    <Compile Include="Logger\MyFilter.cs" />
     <Compile Include="Models\enquiry.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>

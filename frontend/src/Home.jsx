@@ -22,6 +22,9 @@ function Home(){
     var pushContactAgent=()=>{
         history.push("/ContactUs");
     }
+    var pushFaq=()=>{
+        history.push("/ViewFaq");
+    }
     return(
         <div className="container-fluid ">
             <div className='Dashboard-div1-content'>
@@ -35,14 +38,7 @@ function Home(){
                                 </div>
                             </div>
                         </div>
-                        <div className='one-card'>
-                            <div class="card" >
-                                <img style={{height:"250px"}} src={cardImage2} class="card-img-top" alt="create_inqury"></img>
-                                <div class="card-body">
-                                    <a href="/" class="btn btn-primary active" role="button" data-bs-toggle="button" aria-pressed="true" style={{ backgroundColor: 'blue', border: '0px' }} onClick={pushPrintSupport}>Printer Support {'>>'}</a>
-                                </div>
-                            </div>
-                        </div>
+
                         <div className='one-card'>
                             <div class="card" >
                                 <img style={{height:"250px"}} src={cardImage3} class="card-img-top" alt="create_inqury"></img>
@@ -67,7 +63,14 @@ function Home(){
                                 </div>
                             </div>
                         </div>
-                        
+                        <div className='one-card'>
+                            <div class="card" >
+                                <img style={{height:"250px"}} src={cardImage4} class="card-img-top" alt="create_inqury"></img>
+                                <div class="card-body">
+                                    <a href="/" class="btn btn-primary active" role="button" data-bs-toggle="button" aria-pressed="true" style={{ backgroundColor: 'blue', border: '0px' }} onClick={pushFaq}>View FAQ {'>>'}</a>
+                                </div>
+                            </div>
+                        </div>
                         
 
                     </div>
