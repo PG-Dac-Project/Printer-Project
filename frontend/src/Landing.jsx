@@ -31,6 +31,7 @@ import AgentUpdateStatus from './AgentUpdateStatus';
 import Profile from './Profile';
 
 import Technical from './Technical';
+import CheckWarrenty from './CheckWarrenty';
 
 
 function Landing() {
@@ -147,6 +148,7 @@ function Landing() {
                     <Route exact path='/Profile' component={Profile} />
 
                     <Route exact path='/Technical' component={Technical} />
+                    <Route exact path='/CheckWarrenty' component={CheckWarrenty} />
 
                     <Route path="*" component={Home} />
                 </Switch>
