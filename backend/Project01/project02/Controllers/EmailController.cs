@@ -15,10 +15,12 @@ using System.Web.Http.Cors;
 using Org.BouncyCastle.Security;
 using project02.Models;
 using Newtonsoft.Json;
+using project02.Filters;
 
 namespace project02.Controllers
 {
     [EnableCors(origins: "*", headers: "*", methods: "*")]
+    [JwtAuthentication]
     public class EmailController : ApiController
     {
         Project_PrinterEntities db = new Project_PrinterEntities();
@@ -77,14 +79,14 @@ The Printer Support Service team", otp)
             return 1;
         }
         [HttpPost]
-        public int Post([FromBody]VerifyOtp obj)
+        public IHttpActionResult Post([FromBody]VerifyOtp obj)
         {
             if (obj.Otp.Equals(otp)) {
-                return 1;
+                return Ok();
             }
             else
             {
-                return 0;
+                return BadRequest();
             }
         }
     }

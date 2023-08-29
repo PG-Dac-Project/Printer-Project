@@ -8,7 +8,7 @@ import { useState } from 'react';
 function CheckOtp() {
 //   const[msg,setMsg] = useState('');
   const[otp,setOtp] = useState('');
-
+  const[msg,setMsg] = useState('');
    let history = useHistory();
 
   var formValue = (args)=>{
@@ -23,10 +23,14 @@ function CheckOtp() {
         Otp:otp
     })
     .then((response)=>{
-      history.push("/ResetPassword");
+      debugger
+      if(response.status===200){
+        history.push("/ResetPassword");
+      }
     })
     .catch((error)=>{
       debugger
+      setMsg('Please Enter the Correct Otp...')
     })
   }
 
@@ -36,7 +40,7 @@ function CheckOtp() {
         <form method='post'  className='mx-auto'>
           <h4 style={{color:"green"}} className='text-center'>Otp is send to this mail {window.sessionStorage.getItem("email")}</h4>
           <div class="form-outline mb-4 mt-5">
-            <input type="text" id="form2Example1" name='otp' value={otp} onChange={formValue} class="form-control" />
+            <input type="password" id="form2Example1" name='otp' value={otp} onChange={formValue} class="form-control" />
           </div>
 
 
@@ -45,7 +49,8 @@ function CheckOtp() {
 
 
           <div class="text-center">
-            {/* <p>{msg}</p> */}
+
+            <p style={{color:"red"}}>{msg}</p>
           </div>
         </form>
       </div>

@@ -2,11 +2,12 @@ import axios from 'axios';
 import './login.css'
 import { useState } from 'react';
 import { useHistory } from 'react-router-dom';
-
+import Swal from 'sweetalert2';
 function Login() {
   const [Login, setLogin] = useState({ email: '', password: '' });
-  const [msg,setMsg] = useState('');
+   
 
+  const [errors, setErrors] = useState({});
   let history = useHistory();
 
   var formValue = (args) => {
@@ -17,8 +18,53 @@ function Login() {
     setLogin(copyOfLogin);
 
   }
+
+// validation
+function validateForm() {
+  let valid = true;
+  const newErrors = {};
+
+ // email 
+  if (!Login.email.match(/^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/)) {
+    newErrors.email = 'Invalid email address';
+    valid = false;
+  }
+    // Add password validation (e.g., minimum length of 8 characters)
+  if (Login.password.length < 8) {
+     newErrors.password = 'Password must be at least 8 characters long';
+     valid = false;
+  }
+
+
+  setErrors(newErrors);
+  return valid;
+}
+
+// validation for forget password
+function validateFormForForgetPassword() {
+  let valid = true;
+  const newErrors = {};
+  if (!Login.email.trim() === '') {
+    newErrors.email = ' email address required ';
+    valid = false;
+  }
+
+ // email 
+  if (!Login.email.match(/^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/)) {
+    newErrors.email = 'Invalid email address';
+    valid = false;
+  }
+
+
+
+  setErrors(newErrors);
+  return valid;
+}
+// After the Login method is called
   var checkUser = () => {
-    debugger
+    if(validateForm())
+    {
+      debugger
     const url = 'http://localhost:56304/api/Users';
     axios.post(url, {
       email: Login.email,
@@ -27,17 +73,20 @@ function Login() {
       .then((response) => {
         debugger
         if (response.status === 200) {
-          window.localStorage.setItem('token', response.data.fname);
+           // store the token 
+          window.localStorage.setItem("jwtToken",response.data[1]) 
 
-          window.localStorage.setItem('role',response.data.role);
+          window.localStorage.setItem('token', response.data[0].fname);
 
-          window.localStorage.setItem('uid',response.data.uid);
+          window.localStorage.setItem('role',response.data[0].role);
+
+          window.localStorage.setItem('uid',response.data[0].uid);
 
           window.localStorage.setItem('isLogin', true);
-          if(response.data.role === "Agent"){
+          if(response.data[0].role === "Agent"){
             history.push("/AgentDashboard")
           }
-          else if(response.data.role === "Technical"){
+          else if(response.data[0].role === "Technical"){
             history.push("/Technical")
           }
           else{
@@ -45,19 +94,19 @@ function Login() {
           }
           window.location.reload(false);
         }
-        else {
-          alert("wrong email or password?");
-        }
-
+        
 
       })
       .catch((error) => {
         debugger
         console.log(error.data)
       })
+    }
   }
   var sendOtp=()=>{
-    debugger
+    if(validateFormForForgetPassword())
+    {
+      debugger
     const url = `http://localhost:56304/api/Email/?email=${Login.email}`;
     axios.get(url)
     .then((response)=>{
@@ -67,10 +116,16 @@ function Login() {
           history.push("/CheckOtp")
          }
     })
-    .catch((error)=>{
-       debugger
-       setMsg("Not Resgistered email id");
-    })
+      .catch((error) => {
+        debugger
+        Swal.fire(
+          'Sorry!',
+          'Not a Registered email ID',
+          'question'
+        )
+      })
+    }
+
   }
 
 
@@ -82,22 +137,23 @@ function Login() {
           <div class="form-outline mb-4 mt-5">
             <input type="email" id="form2Example1" name='email' value={Login.email} onChange={formValue} class="form-control" />
             <label class="form-label" for="form2Example1">User ID</label>
+            {errors.email && <div style={{ color: "red" }} className="error">{errors.email}</div>}
           </div>
 
 
           <div class="form-outline mb-4">
             <input type="password" id="form2Example2" name='password' value={Login.password} onChange={formValue} class="form-control" />
             <label class="form-label" for="form2Example2">Password</label>
+            {errors.password && <div style={{ color: "red" }} className="error">{errors.password}</div>}
           </div>
 
 
           <div class="row mb-4">
             <div class="col d-flex justify-content-center">
-
             </div>
 
             <div class="col">
-              <p style={{color:"blue"}} onClick={sendOtp}>Forgot password?</p>
+              <p style={{color:"blue"}} onClick={sendOtp}><u>Forgot password?</u></p>
             </div>
           </div>
 
@@ -111,7 +167,7 @@ function Login() {
           </div>
           <div class="text-center">
             <hr></hr>
-            <p style={{color:"red"}}>{msg}</p>
+            
           </div>
         </form>
 

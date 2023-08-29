@@ -41,11 +41,11 @@ function ResetPassword() {
         <form method='post'  className='mx-auto'>
           <h4 style={{color:"green"}} className='text-center'>Otp is send to this mail {window.sessionStorage.getItem("email")}</h4>
           <div class="form-outline mb-4">
-            <input type="text" id="form2Example2" name='password' value={reset.password} onChange={formValue} class="form-control" />
+            <input type="password" id="form2Example2" name='password' value={reset.password} onChange={formValue} class="form-control" />
             <label class="form-label" for="form2Example2">Password</label>
           </div>
           <div class="form-outline mb-4">
-            <input type="text" id="form2Example2" name='cpassword' value={reset.cpassword} onChange={formValue} class="form-control" />
+            <input type="password" id="form2Example2" name='cpassword' value={reset.cpassword} onChange={formValue} class="form-control" />
             <label class="form-label" for="form2Example2">Confirm Password</label>
           </div>
 

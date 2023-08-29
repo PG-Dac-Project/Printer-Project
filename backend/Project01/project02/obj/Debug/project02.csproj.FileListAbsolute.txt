@@ -292,6 +292,7 @@ C:\PGDAC-Project\Printer-Project\backend\Project01\project02\obj\Debug\project02
 C:\PGDAC-Project\Printer-Project\backend\Project01\project02\obj\Debug\project02.csproj.CopyComplete
 C:\PGDAC-Project\Printer-Project\backend\Project01\project02\obj\Debug\project02.dll
 C:\PGDAC-Project\Printer-Project\backend\Project01\project02\obj\Debug\project02.pdb
+<<<<<<< HEAD
 E:\CDAC PROJECT\NewFrontendAndBackend\Printer-Project-v2\Printer-Project\backend\Project01\project02\bin\project02.dll.config
 E:\CDAC PROJECT\NewFrontendAndBackend\Printer-Project-v2\Printer-Project\backend\Project01\project02\bin\project02.dll
 E:\CDAC PROJECT\NewFrontendAndBackend\Printer-Project-v2\Printer-Project\backend\Project01\project02\bin\project02.pdb
@@ -390,3 +391,21 @@ E:\CDAC PROJECT\NewFrontendAndBackend\Printer-Project-v2\Printer-Project\backend
 E:\CDAC PROJECT\NewFrontendAndBackend\Printer-Project-v2\Printer-Project\backend\Project01\project02\obj\Debug\project02.csproj.CopyComplete
 E:\CDAC PROJECT\NewFrontendAndBackend\Printer-Project-v2\Printer-Project\backend\Project01\project02\obj\Debug\project02.dll
 E:\CDAC PROJECT\NewFrontendAndBackend\Printer-Project-v2\Printer-Project\backend\Project01\project02\obj\Debug\project02.pdb
+=======
+C:\PGDAC-Project\Printer-Project\backend\Project01\project02\bin\Microsoft.Bcl.AsyncInterfaces.dll
+C:\PGDAC-Project\Printer-Project\backend\Project01\project02\bin\Microsoft.IdentityModel.Abstractions.dll
+C:\PGDAC-Project\Printer-Project\backend\Project01\project02\bin\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\PGDAC-Project\Printer-Project\backend\Project01\project02\bin\Microsoft.IdentityModel.Logging.dll
+C:\PGDAC-Project\Printer-Project\backend\Project01\project02\bin\Microsoft.IdentityModel.Tokens.dll
+C:\PGDAC-Project\Printer-Project\backend\Project01\project02\bin\System.IdentityModel.Tokens.Jwt.dll
+C:\PGDAC-Project\Printer-Project\backend\Project01\project02\bin\System.Text.Encodings.Web.dll
+C:\PGDAC-Project\Printer-Project\backend\Project01\project02\bin\System.Text.Json.dll
+C:\PGDAC-Project\Printer-Project\backend\Project01\project02\bin\Microsoft.Bcl.AsyncInterfaces.xml
+C:\PGDAC-Project\Printer-Project\backend\Project01\project02\bin\Microsoft.IdentityModel.Abstractions.xml
+C:\PGDAC-Project\Printer-Project\backend\Project01\project02\bin\Microsoft.IdentityModel.JsonWebTokens.xml
+C:\PGDAC-Project\Printer-Project\backend\Project01\project02\bin\Microsoft.IdentityModel.Logging.xml
+C:\PGDAC-Project\Printer-Project\backend\Project01\project02\bin\Microsoft.IdentityModel.Tokens.xml
+C:\PGDAC-Project\Printer-Project\backend\Project01\project02\bin\System.IdentityModel.Tokens.Jwt.xml
+C:\PGDAC-Project\Printer-Project\backend\Project01\project02\bin\System.Text.Encodings.Web.xml
+C:\PGDAC-Project\Printer-Project\backend\Project01\project02\bin\System.Text.Json.xml
+>>>>>>> main

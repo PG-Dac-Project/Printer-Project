@@ -31,7 +31,11 @@ import AgentUpdateStatus from './AgentUpdateStatus';
 import Profile from './Profile';
 
 import Technical from './Technical';
+
 import CheckWarrenty from './CheckWarrenty';
+
+import EditProfile from './EditProfile';
+
 
 
 function Landing() {
@@ -88,7 +92,23 @@ function Landing() {
                                     <Link to="/ContactUs" className="nav-link active ">ContactUS</Link>
                                 </li>
                                 <li class="nav-item">
-                                    <Link to="/Profile" className="nav-link active ">Profile</Link>
+                                    {
+                                        isLogin && (
+                                            <>
+                                                {/* <div>
+                                                    <li class="nav-item">
+                                                        <h6>Welcome {curUser}</h6>
+                                                    </li>
+                                                </div> */}
+                                                <div>
+                                                    <li class="nav-item">
+                                                    <Link to="/Profile" className="nav-link active "><strong>Profile</strong></Link>
+                                                    </li>
+                                                </div>
+
+                                            </>
+                                        )
+                                    }
                                 </li>
                                 <nav navbar>
                                     {
@@ -148,7 +168,11 @@ function Landing() {
                     <Route exact path='/Profile' component={Profile} />
 
                     <Route exact path='/Technical' component={Technical} />
+
                     <Route exact path='/CheckWarrenty' component={CheckWarrenty} />
+
+                    <Route exact path='/EditProfile' component={EditProfile} />
+
 
                     <Route path="*" component={Home} />
                 </Switch>
