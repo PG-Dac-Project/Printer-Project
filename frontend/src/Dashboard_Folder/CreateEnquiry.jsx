@@ -25,11 +25,8 @@ function CreateEnquiry() {
 
     var onProductRegister = () => {
         debugger;
-<<<<<<< HEAD
         var uid= window.localStorage.getItem('uid');
-=======
-        var uid=window.localStorage.getItem('uid')
->>>>>>> main
+
         const url = `http://localhost:56304/api/Enquiry/${enquiryDetails.serialNumber}`;
         axios.put(url,
             {
