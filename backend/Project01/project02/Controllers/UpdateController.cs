@@ -16,25 +16,39 @@ namespace project02.Controllers
     {
         Project_PrinterEntities db = new Project_PrinterEntities();
         // GET: api/Update
-        public IEnumerable<string> Get()
+        [HttpPost]
+        [Route("api/Update/Warrenty")]
+        public int Warrenty([FromBody] product value)
         {
-            return new string[] { "value1", "value2" };
+
+            DateTime date = value.purchase_date;
+            var warrentyDate = DateTime.Now - date;
+            int day = warrentyDate.Days;
+            if (day <= 365)
+            {
+                return 1;
+            }
+            else
+            {
+                return 0;
+            }
+
         }
 
         // GET: api/Update/5
         public product Get(int id)
         {
-           product pd= db.products.Find(id);
+            product pd = db.products.Find(id);
             return pd;
         }
 
         // POST: api/Update
-        public void Post([FromBody]string value)
+        public void Post([FromBody] string value)
         {
         }
 
         // PUT: api/Update/5
-        public void Put(int id, [FromBody]string value)
+        public void Put(int id, [FromBody] string value)
         {
         }
 

@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
 using System.Net.Http.Headers;
+using System.Web.Http.ExceptionHandling;
+
 namespace project02
 {
     public static class WebApiConfig
@@ -13,6 +15,7 @@ namespace project02
             config.Filters.Add(new AuthorizeAttribute());
             // Web API routes
             config.MapHttpAttributeRoutes();
+            config.Services.Replace(typeof(IExceptionHandler), new CustomExceptionHandler.CustomExceptionHandler());
 
             config.EnableCors();
 

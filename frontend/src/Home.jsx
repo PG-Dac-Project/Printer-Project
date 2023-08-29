@@ -7,7 +7,7 @@ import cardImage4 from './images/home-printer.png'
 function Home(){
     let history=useHistory();
     var pushDriver=()=>{
-        history.push("/driver");
+        history.push("/Software&Drivers");
     }
     var pushPrintSupport=()=>{
         history.push("/printsupport");
@@ -17,10 +17,10 @@ function Home(){
     }
     
     var pushCheckWarrenty=()=>{
-        history.push("/checkwarrenty");
+        history.push("/CheckWarrenty");
     }
     var pushContactAgent=()=>{
-        history.push("/checkwarrenty");
+        history.push("/ContactUs");
     }
     return(
         <div className="container-fluid ">
